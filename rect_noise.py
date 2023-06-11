@@ -24,18 +24,25 @@ def rect_noise():
 
     cv2.namedWindow("select_region")
     cv2.setMouseCallback("select_region", select)
+    while cap.isOpened():
+        __ , frame = cap.read()
+        if __ is True:
+            cv2.imshow("select_region", frame)
+            if cv2.waitKey(1) == 27 or doner == True:
+                cv2.destroyAllWindows()
+                print("gone--")
+                break
 
-    while True:
-        _, frame = cap.read()
+    # while True:
+    #     _, frame = cap.read()
+    #     cv2.imshow("select_region", frame)
+    #     if cv2.waitKey(1) == 27 or doner == True:
+    #         cv2.destroyAllWindows()
+    #         print("gone--")
+    #         break
 
-        cv2.imshow("select_region", frame)
 
-        if cv2.waitKey(1) == 27 or doner == True:
-            cv2.destroyAllWindows()
-            print("gone--")
-            break
-
-    while True:
+    while cap.isOpened():
         _, frame1 = cap.read()
         _, frame2 = cap.read()
 
